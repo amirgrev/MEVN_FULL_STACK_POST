@@ -12,6 +12,13 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static("uploads"));
 app.use("/api/post", require("./routers/router"));
 
+if(process.env.NODE_ENV === 'production') {
+  app.use(express.static(__dirname+'/dist/'))
+  app.get('*', (req, res) => {
+    res.sendFile(__dirname+'/dist/index.html')
+  })
+}
+
 mongoose
   .connect(process.env.DB_URI, {
     useNewUrlParser: true,

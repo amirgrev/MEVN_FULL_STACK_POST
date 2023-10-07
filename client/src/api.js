@@ -6,7 +6,7 @@ export default class API {
     const res = await axios.get(url);
     return res.data;
   }
-  static async getPostsByID(id) {
+  static async getPostById(id) {
     const res = await axios.get(`${url}/${id}`);
     return res.data;
   }
@@ -14,11 +14,11 @@ export default class API {
     const res = await axios.post(url, post);
     return res.data;
   }
-  static async getAllPost(id, post) {
+  static async updatePost(id, post) {
     const res = await axios.patch(`${url}/${id}`, post);
     return res.data;
   }
-  static async deletePostsByID(id) {
+  static async deletePost(id) {
     const res = await axios.delete(`${url}/${id}`);
     return res.data;
   }
